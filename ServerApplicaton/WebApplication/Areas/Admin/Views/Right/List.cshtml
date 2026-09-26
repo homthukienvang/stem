@@ -1,0 +1,64 @@
+﻿@using System.Linq
+@model DataModel.Base.PagedData<Model.Right>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#browser").treeview();
+    });
+</script>
+<div class="dTree">
+    <ul id="browser" class="filetree">
+        @{
+            var i = 1;
+            var j = 1;
+            foreach (var p in Model.Data.Where(x => x.ParentId == 0 || x.ParentId == null))
+            {
+                if (Model.Data.Any(x => x.ParentId == p.RightId))
+                {
+                    <li>
+                        <a href="#">
+                            <span class="folder">
+                                [@i]  @p.RightName
+                                <a href="#" onclick="App.Right.editRightClick('@p.RightId')">[Sửa]</a>
+                            </span>
+                        </a>
+                        <ul class="filetree">
+                            @{
+                    j = 1;
+                    foreach (var c in Model.Data.Where(x => x.ParentId == p.RightId))
+                    {
+                        <li>
+                            <a href="#">
+                                <span class="file">
+                                    [@i.@j]    @c.RightName
+                                    <a href="#" onclick="App.Right.editRightClick('@c.RightId')">[Sửa]</a>
+                                </span>
+                            </a>
+                        </li>
+                        j++;
+                    }
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="#">
+                            <span class="folder">
+                                [@i]   @p.RightName
+                                <a href="#" onclick="App.Right.editRightClick('@p.RightId')">[Sửa]</a>
+                            </span>
+                        </a>
+                    </li>
+                }
+                i++;
+            }
+
+        }
+    </ul>
+</div>
+
+<script>
+    $(".ace-checkbox").find("input[type='hidden']").remove();
+</script>

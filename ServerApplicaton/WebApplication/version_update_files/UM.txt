@@ -1,0 +1,2 @@
+app|version|release date|url|file
+updateme|1.1.0.0|09/16/2015|http://localhost:10437/version_update_files/|um.zip

@@ -1,0 +1,77 @@
+﻿@using System.Linq
+@model System.Collections.Generic.List<Model.Right>
+<div class="sidebar" id="sidebar">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('sidebar', 'fixed');
+        } catch (e) { }
+    </script>
+
+    <ul class="nav nav-list">
+        @{
+            foreach (var p in Model.Where(x => x.ParentId.HasValue == false || x.ParentId.Value == 0).OrderBy(x => x.Order))
+            {
+                var lst = Model.Where(x => x.ParentId == p.RightId);
+                if (!lst.Any())
+                {
+                    <li class="">
+                        <a href="@p.Url">
+                            <i class="icon-folder-close-alt"></i>
+                            <span class="menu-text">@p.NameInMenu</span>
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-folder-close-alt"></i>
+                            <span class="menu-text">@p.NameInMenu</span>
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            @foreach (var r in lst.OrderBy(x => x.Order))
+                            {
+                                <li>
+                                    <a href="@r.Url">
+                                        <i class="icon-double-angle-right"></i>
+                                        @r.NameInMenu
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+        }
+
+    </ul><!-- /.nav-list -->
+
+    <div class="sidebar-collapse" id="sidebar-collapse">
+        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+    </div>
+
+    <script type="text/javascript">
+        try {
+            ace.settings.check('sidebar', 'collapsed');
+        } catch (e) {
+        }
+    </script>
+
+    <script type="text/javascript">
+        // class="active"
+        $(document).ready(function () {
+            @{
+            var rawUrl = Request.RawUrl;
+        }
+            $("a[href='@rawUrl']").parent().attr('class', 'active');
+            var parent = $("a[href='@rawUrl']").parent().parent();
+            @*$("a[href='@rawUrl']").append("<span class='selected'></span>");*@
+            var atr = parent.attr('class');
+            if (atr == 'submenu') {
+                //parent.attr('style', 'display: block;');
+                parent.parent().attr('class', 'active open');
+            }
+        });
+    </script>
+</div>

@@ -1,0 +1,121 @@
+﻿@using System
+@model DataModel.Base.PagedData<Model.Client>
+    <table id="sample-table-1" class="table table-striped table-hover">
+        <thead style="white-space:nowrap">
+            <tr>
+                <th>
+                    <label class="ace-checkbox">
+                        @Html.CheckBox("SelectAll", new { @class = "ace" })
+                        <span class="lbl"></span>
+                    </label>
+                </th>
+                <th>#</th>
+                <th>Tên</th>
+                <th>Lớp</th>
+                <th>Thông tin</th>
+                <th>Đơn vị</th>
+                <th>Mã Máy</th>
+                <th>Khóa</th>
+                <th>Hạn sử dụng</th>
+                <th>Duyệt</th>
+                @*<th width="80">Full bài học</th>*@
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach (var client in Model.Data)
+                {
+                    <tr>
+                        <td class="">
+                            <label class="ace-checkbox">
+                                @Html.CheckBoxFor(x => client.IsSelected, new { @class = "ace", @clientId = client.ClientId })
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+                        <td class="center">
+                            @client.RowIndex
+                        </td>
+
+                        <td>
+                            <a href="javascript:;">@client.UserName</a><br />
+                            [@client.FullName]
+                        </td>
+                        <td>@client.Email</td>
+                        <td>@client.Phone</td>
+                        <td>
+                            <small>
+                                @client.CityCode <br />
+                                \@client.DistrictCode <br />
+                                \<b>@client.SchoolCode</b>
+                            </small>
+                        </td>
+                        <td><a href="javascript:;" title="@client.MacIp"><i class="@(string.IsNullOrEmpty(client.MacIp)?"text-danger":"") fa fa-desktop"></i></a></td>
+                        <td>
+                            <label class="ace-checkbox">
+                                @Html.CheckBoxFor(x => client.IsLock, new { @class = "ace", disabled = "disabled" })
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+                        <td>
+                            @{
+                                var classStyle = client.EndDate.HasValue ? (client.EndDate.Value < DateTime.Now ? "red" : "") : "";
+                            }
+                            <span class="@classStyle">@(client.EndDate.HasValue ? client.EndDate.Value.ToString("dd/MM/yyyy") : "N/A")</span>
+                        </td>
+                        <td>
+                            <label class="ace-checkbox">
+                                @Html.CheckBoxFor(x => client.Approved, new { @class = "ace", disabled = "disabled" })
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+                        @*<td class="">
+                                <label class="ace-checkbox">
+                                    @Html.CheckBoxFor(x => client.FullLesson, new { @class = "ace", disabled = "disabled" })
+                                    <span class="lbl"></span>
+                                </label>
+                            </td>*@
+                        <td>
+                            <div style="width: 168px">
+                                <a href="javascript:;" onclick="App.Client.editClientClick('@client.ClientId')" class="btn btn-xs btn-info width-75px">
+                                    <i class="icon-edit"></i>Sửa
+                                </a>
+                                <a href="javascript:;" onclick=" App.Client.deleteClientClick('@client.ClientId') " class="btn btn-xs btn-danger width-75px">
+                                    <i class="icon-trash "></i>Xóa
+                                </a>
+                                <div class="margin-top-3px"></div>
+                                <a href="javascript:;" onclick="App.Client.showHistoryClick('@client.ClientId')" class="btn btn-xs btn-success width-75px">
+                                    <i class="icon-dollar"></i>Giao dịch
+                                </a>
+                                <a href="javascript:;" onclick="App.Client.showLessonClick('@client.ClientId')" class="btn btn-xs btn-info width-75px">
+                                    <i class="icon-file"></i>Bài học
+                                </a>
+                            </div>
+                            @*<div style="width: 160px; margin-top: 5px">
+                                    <a href="javascript:;" onclick="App.Client.resetPassClick('@client.ClientId')" class="btn btn-xs btn-info">
+                                        <i class="icon-refresh"></i>Reset password
+                                    </a>
+                                </div>*@
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot class="sticky-panel">
+            <tr>
+                <td colspan="12" align="right">
+                    @{
+                        Html.RenderPartial("Pagination", Model.Pagination);
+                    }
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+    <script>
+        $(".ace-checkbox").find("input[type='hidden']").remove();
+        $("#sample-table-1 #SelectAll").change(function () {
+            $("#sample-table-1 input[name^='client.IsSelected']").prop("checked", this.checked);
+        });
+    </script>

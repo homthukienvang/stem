@@ -1,0 +1,139 @@
+﻿@using Extensions
+@using WebApplication.Helper @model Model.Lesson
+
+<script>
+    function removeFile(element) {
+        $(element).parent().remove();
+    }
+    $(document).ready(function () {
+        App.Common.UploadFile("#ImageUpload", function (data) {
+            debugger;
+            $("#GuideFile").val(data.result.name);
+        });
+        App.Common.UploadFile("#SlideImage", function (data) {
+            debugger;
+            $("#SlideImage .mfile").append('<div class="iFileGroup  col-md-12"> <input type="hidden" class="DocumentId col-md-5" value="0" /><input type="text" class="DocName col-md-5" value=""/>'
+            + '<input  class="FileName col-md-5" disabled  type="text" value="' + data.result.name + '"  />' +
+                '<a href="#" onclick="removeFile(this)" class="col-md-1 btn btn-xs btn-danger"> ' +
+                '<i class="icon-trash  bigger-120"></i> Xóa </a></div>');
+        });
+    });
+</script>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upload tài liệu bài giảng</h4>
+            </div>
+            @using (Html.BeginForm("UploadDocument", "Lesson", FormMethod.Post, new { @id = "CreateLesson" }))
+            {
+                <div class="modal-body">
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(x => x.LessonId, new { @class = "form-control", @placeholder = " Name" })
+
+
+                    <div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label  col-xs-12"> Tên bài học</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <div id="ImageUpload">
+                                    <label class="control-label"> Giáo án</label>
+                                    <div class="file_name">
+
+                                    </div>
+                                    @Html.TextBoxFor(x => x.GuideFile, new { @class = "form-control", @disabled = "disabled" })
+									<a  style="    display: block;    width: 100%;" href="@string.Format("/Images/{0}",Model.GuideFile)" target="_blank">Download</a>
+                                    <span class="btn btn-xs btn-primary fileinput-button " style="margin-top: 10px">
+                                        <i class="fa fa-plus-circle"></i> Tải giáo án
+                                        <input id="fileuploadIcon" class="fileupload" type="file" name="files[]">
+                                    </span>
+                                    <div class="progress" style="display: none">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                            <span class="sr-only">0% Complete</span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group  col-md-12">
+                                <div id="SlideImage">
+                                    <label class="control-label  col-md-12">Tài liệu</label>
+                                    <div class="iFileGroupHead  col-md-12">
+                                        <label class="  col-md-5">Tên tài liệu</label>
+                                        <label class="  col-md-5">Tên file</label>
+                                    </div>
+                                    <hr class="dotted col-md-12" style="margin: 0" />
+                                    <div class="mfile">
+                                        <div class="file_name">
+
+                                        </div>
+                                        @foreach (var doc in Model.Documents)
+                                        {
+                                            <div class="iFileGroup  col-md-12">      
+                                                <input type="hidden" class="DocumentId col-md-5"  value="@doc.DocumentId" />
+                                                <input type="text" class="DocName col-md-5" value="@doc.DocumentName"/>
+                                                <input class="FileName col-md-5" disabled type="text" value="@doc.FileName"/>
+
+                                                <a href="#" onclick="removeFile(this)" class="col-md-1 btn btn-xs btn-danger">
+
+                                                    <i class="icon-trash  bigger-120"></i> Xóa
+                                                </a>
+												<a  style="    display: block;    width: 100%;float: left;" href="@string.Format("/Images/{0}",doc.FileName)" target="_blank">Download</a>
+                                            </div>
+                                        }
+
+                                    </div>
+                                    <div class="progress col-md-12" style="display: none">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                            <span class="sr-only">0% Complete</span>
+                                        </div>
+                                    </div>
+                                    <div class="clear-fix"></div>
+                                    <span class="btn btn-xs btn-primary fileinput-button " style="margin-top: 10px;">
+                                        <i class="fa fa-plus-circle"></i> Tải tài liệu
+                                        <input id="fileuploadIcon" class="fileupload" type="file" name="files[]">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="clear-fix"></div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errormsg" class="error" style="display: inline-block;"></label>
+                    <button type="button" onclick="App.Lesson.uploadDocument()" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Lưu
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Hủy
+                    </button>
+                </div>
+            }
+        </div>
+
+    </div>
+    <script>
+        jQuery(document).ready(function () {
+            $(".ace-checkbox").find("input[type='hidden']").remove();
+
+        });
+
+    </script>
+</div>

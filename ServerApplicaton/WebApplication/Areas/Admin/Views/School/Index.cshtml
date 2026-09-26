@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Quản lý trường học";
+}
+
+@model  DataModel.Base.PagedData<Model.School>
+    <script src="~/assets/adminjs/school.js?v=12"></script>
+
+
+    <!-- Modal -->
+    <div id="AddForm"></div>
+
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-3">
+                <input id="tSchoolCode" name="tSchoolCode" placeholder="Mã trường" class="lessonsearchbox" style="width: 100%" type="text" value="">
+            </div>
+            <div class="col-sm-3">
+                <input id="tCityCode" name="tCityCode" placeholder="Mã tỉnh thành" class="lessonsearchbox" style="width: 100%" type="text" value="">
+            </div>
+            <div class="col-sm-3">
+                <input id="tDistrictCode" name="tDistrictCode" placeholder="Mã quận/huyện" class="lessonsearchbox" style="width: 100%" type="text" value="">
+            </div>
+            <div class="col-sm-2">
+                <input id="tDeploymentMethod" name="tDeploymentMethod" placeholder="Phương thức triển khai" class="lessonsearchbox" style="width: 100%" type="text" value="">
+            </div>
+            <div class="col-sm-1">
+                <button onclick="Search()" class="btn btn-xs btn-primary">
+                    <i class="fa fa-search"></i>
+                    Tìm kiếm
+                </button>
+            </div>
+        </div><!-- #nav-search -->
+        <div class="form-group">
+            <div class="col-xs-12">
+                <button data-toggle="modal" id="AddSchool" class="btn btn-xs btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Thêm mới
+                </button>
+
+                <a href="#" onclick="App.School.exportListSchoolClick()" class="btn btn-xs btn-success">
+                    <i class="icon-download bigger-120"></i> Export trường
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- #nav-search -->
+
+    <div class="clear-fix"></div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+
+                <div id="result">
+                    @{
+                        Html.RenderPartial("List", Model);
+                    }
+                </div>
+
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /span -->
+    </div>
+    <!-- /row -->
+
+    <div class="hr hr-18 dotted hr-double"></div>

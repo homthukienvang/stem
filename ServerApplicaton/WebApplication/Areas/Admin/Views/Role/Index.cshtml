@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Quản lý Role";
+}
+@model  DataModel.Base.PagedData<Model.Role> 
+    <link href="~/assets/js/jquery.treeview/jquery.treeview.css" rel="stylesheet" />
+    <script src="~/assets/js/jquery.treeview/jquery.treeview.js"></script>
+    <script src="~/assets/adminjs/role.js"></script>
+
+   
+    <!-- Modal -->
+    <div id="AddForm"></div>
+
+
+    <div class="row">
+        <div class="col-xs-12" style="margin-bottom: 10px">
+            <div class="pull-left">
+                <button data-toggle="modal" id="AddRole" class="btn btn-xs btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Thêm mới
+                </button>
+            </div>
+            <div class="pull-Role">
+             
+            </div><!-- #nav-search -->
+        </div>
+    </div>
+
+    <div class="clear-fix"></div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+
+                <div id="result">
+                    @{
+                        Html.RenderPartial("List", Model);
+                    }
+                </div>
+
+            </div><!-- /.table-responsive -->
+        </div><!-- /span -->
+    </div><!-- /row -->
+
+    <div class="hr hr-18 dotted hr-double"></div>

@@ -1,0 +1,8 @@
+﻿31/05/2021 (đã apply vào ngày 27/8/21):
+	- sửa các file js: assest/adminjs/..
+	- sửa các view trong areas/admin
+	- thêm log4net (dll, cấu hình)
+	- Sửa các file STORE để tương tác thích hợp (cần update ALTER STORE.. cho đủ)
+
+31/07/2024
+	- UPDATE store Proc_SelectPaged_School, thêm @DeploymentMethod

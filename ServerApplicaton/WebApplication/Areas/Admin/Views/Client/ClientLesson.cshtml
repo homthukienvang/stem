@@ -1,0 +1,124 @@
+﻿@using System.Linq
+@model  Model.Client
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 900px">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Giới hạn bài học cho giáo viên</h4>
+            </div>
+         @using (Html.BeginForm("ClientLesson", "Client", FormMethod.Post, new { @id = "ClientLesson" }))
+                {   <div class="modal-body" style="height: 550px; overflow: auto">
+               
+
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(x=>x.ClientId)
+                    @*<div class="row">
+                        <div class="form-group  col-md-12">
+                            <span class="control-label col-xs-12 ace-checkbox">
+                                <label class="middle">
+                                    @Html.CheckBoxFor(x => x.FullLesson, new { @class = "ace form-control"})
+                                    <span class="lbl"> Cho phép giáo viên sử dụng toàn bộ bài học</span>
+                                </label>
+                            </span>
+                        </div>
+                    </div>*@
+                        
+                            @foreach (var sub in Model.Subjects.OrderBy(x=>x.Name))
+                            {
+                                <div class="row">
+                                    <div class="form-group col-md-12" style="border-bottom: 1px solid #ddd;">
+                                        <label class="control-label  col-xs-12"><b>Môn học:</b><b style="color: blue"> @sub.Name</b></label>
+                                    </div>
+                                    @foreach (var room in Model.Rooms.Where(x => x.SubjectId == sub.SubjectId).OrderBy(x=>x.Name))
+                                    {
+                                        <div style="width:100%; float:left">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd;width:100%">
+                                                <label class="control-label  col-xs-8"><b style="color: blue"> @room.Name</b></label>
+                                                <span class="control-label col-xs-2 ace-checkbox">
+                                                    <label class="middle">
+                                                        @Html.CheckBox("SelectAllLesson", new { @roomid = room.RoomId, @class = "ace form-control" })
+                                                        <span class="lbl" style="color: blue"> Chọn/bỏ hết</span>
+                                                    </label>
+                                                </span>
+                                                 <span class="control-label col-xs-2 ace-checkbox">
+                                                    <label class="middle">
+                                                        @Html.CheckBox("ShowLesson", new {@roomid = room.RoomId, @class = "ace form-control"})
+                                                        <span class="lbl" style="color: blue"> Hiện/Ẩn</span>
+                                                    </label>
+                                                </span>
+                                                <div class="ShowLessonGroup" style="display: none" roomid = "@room.RoomId" >
+                                                    @{
+                                                        var lst = Model.ClientLessons.Where(x => x.RoomId == room.RoomId).OrderBy(x => x.Name).ToList();
+                                                        foreach (var les in lst)
+                                                        {
+
+                                                            <div class="col-md-6">
+                                                                <span class="col-xs-8 ace-checkbox">
+                                                                    <label class="middle">
+                                                                        @Html.CheckBoxFor(x => les.IsSelected, new {@roomid = room.RoomId, @class = "IsSelected ace form-control", lessonid = les.LessonId})
+                                                                        <span class="lbl"> @les.Name</span>
+                                                                    </label>
+                                                                </span>
+                                                                <div class="col-xs-4">
+                                                                    <input class="form-control datepicker" value="@(les.EndDate.HasValue?les.EndDate.Value.ToString("dd/MM/yyyy"):"")" name="EndDateLesson" placeholder="Ngày hết hạn" lessonid = "@les.LessonId" type="text">
+                                                                </div>
+                                                            </div>
+
+                                                        }
+
+                                                    }
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    } 
+                                </div>
+                            } 
+                            <div class="clear-fix"></div>
+                     
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Lưu
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <i class="fa fa-close"></i> Hủy
+                </button>
+            </div> 
+         }
+        </div>
+
+    </div>
+    <script>
+        jQuery(document).ready(function () {
+            $('.datepicker').datepicker({
+                orientation: 'bottom',
+                autoclose: true,
+                startDate: '1/1/1900',                
+                language: 'vi'
+            });
+            $(".ace-checkbox").find("input[type='hidden']").remove();
+            App.Client.initClientLessons();
+            $("input[name='ShowLesson']").change(function () {
+                var roomid = $(this).attr("roomid");
+                if ($(this).is(":checked")) {
+
+                    $(".ShowLessonGroup[roomid='" + roomid + "']").show();
+                } else {
+
+                    $(".ShowLessonGroup[roomid='" + roomid + "']").hide();
+                }
+            });
+
+            $("input[name='SelectAllLesson']").change(function () {
+                var roomid = $(this).attr("roomid");
+                console.log(roomid);
+                $(".ShowLessonGroup[roomid='" + roomid + "'] input[name^='les.IsSelected']").prop("checked", this.checked);
+            });
+        });
+
+    </script>
+</div>

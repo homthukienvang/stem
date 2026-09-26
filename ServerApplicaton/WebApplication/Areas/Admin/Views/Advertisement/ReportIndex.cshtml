@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Thống kê lượt click quảng cáo";
+}
+    @model DataModel.Base.PagedData<Model.AdvReport>
+    <script src="~/assets/adminjs/adv.js?v=2"></script>
+
+    <style>
+        .clientsearchbox {
+            width: 130px !important;
+            float: left;
+            margin-right: 5px;
+        }
+    </style>
+
+    <!-- Modal -->
+    <div id="AddForm"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-left" style="margin-bottom: 10px">
+                <select class="form-control input-sm clientsearchbox" data-val="true" id="advid" name="reporttype">
+                    <option value="1" selected="selected">Tiêu đề</option>
+                    <option value="2">Quảng cáo</option>
+                </select>
+                <select class="form-control input-sm clientsearchbox" data-val="true" id="reporttype" name="reporttype">
+                    <option value="0" selected="selected" >Theo tỉnh thành</option>
+                    <option value="1">Theo quận huyện</option>
+                    <option value="2">Theo trường</option>
+                    <option value="3">Theo người dùng</option>
+                </select>
+                <input id="searchvalue" name="searchvalue" placeholder="" class="clientsearchbox" type="text" value="">
+                <input class="datepicker clientsearchbox" placeholder="Từ ngày" id="tBeginDate" name="BeginDate" type="text">
+                <input class="datepicker clientsearchbox" placeholder="đến ngày" id="tEndDate" name="EndDate" type="text">  
+                <button onclick="Search()" class="btn btn-xs btn-primary">
+                    <i class="fa fa-search"></i>
+                    Thống kê
+                </button>
+            </div>
+            <!-- #nav-search -->
+        </div>
+        <div class="col-xs-12" style="margin-bottom: 10px">
+            <div class="pull-left">                
+                <label id="errormsg" class="error" style="display: inline-block;"></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear-fix"></div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <div id="result">
+                    @{
+                        Html.RenderPartial("List", Model);
+                    }
+                </div>
+
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /span -->
+    </div>
+    <!-- /row -->
+
+    <div class="hr hr-18 dotted hr-double"></div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('.datepicker').datepicker({
+            orientation: 'bottom',
+            autoclose: true,
+            startDate: '1/1/1900',            
+            language: 'vi',
+            todayBtn: "linked"
+        });
+    });
+</script>

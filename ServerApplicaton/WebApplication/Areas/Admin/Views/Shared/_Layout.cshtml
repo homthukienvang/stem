@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- basic styles -->
+
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+    <!-- page specific plugin styles -->
+    <!-- fonts -->
+    <link href="/assets/css/ace-fonts.css" rel="stylesheet" />
+    <link href="~/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    @*<link href="/assets/css/font-awesome.min.css" rel="stylesheet" />*@
+
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="/assets/css/ace.min.css?v=3" />
+    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    @*<script src="~/assets/js/jquery-2.0.3.min.js"> </script>*@
+    <script src="/assets/js/bootstrap.min.js"> </script>
+    <script src="/assets/js/typeahead-bs2.min.js"> </script>
+    <script src="/assets/bootbox/bootbox.min.js"> </script>
+    <script src="~/assets/js/jquery.validate.min.js"></script>
+    <!-- page specific plugin scripts -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="/assets/js/html5shiv.js"> </script>
+        <script src="/assets/js/respond.min.js"> </script>
+    <![endif]-->
+    <script src="/assets/uploadfile/jquery.ui.widget.js"> </script>
+    <link href="/assets/uploadfile/jquery.fileupload.css" rel="stylesheet" />
+    <script src="/assets/uploadfile/jquery.fileupload.js"> </script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+
+    @*<link href="~/assets/js/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <script src="~/assets/js/bootstrap-datepicker-master/js/bootstrap-datepicker.js"></script>
+    <script src="~/assets/js/bootstrap-datepicker-master/js/locales/bootstrap-datepicker.vi.js"></script>*@
+
+    <link href="~/assets/js/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.css" rel="stylesheet" />
+    <script src="~/assets/js/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="~/assets/js/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.vi.min.js"></script>
+
+    <link href="/assets/adminstyle/admin.stylesheet.css" rel="stylesheet" />
+    <script src="/assets/adminjs/commonfunction.js"> </script>
+    <script src="/assets/adminjs/admin.javascript.js"> </script>
+    @RenderSection("ExtendJs", required: false)
+</head>
+<body>
+    <div class="loadingstatus"><i class="fa fa-spin  icon-cog bigger-160"></i> <span> Đang tải dữ liệu...</span></div>
+
+    @{
+        Html.RenderPartial("Navbar");
+    }
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            setInterval(keepAlive, 60000);
+            try {
+                ace.settings.check('main-container', 'fixed');
+            } catch (e) {
+            }
+        </script>
+
+        <div class="main-container-inner">
+            <a class="menu-toggler" id="menu-toggler" href="#">
+                <span class="menu-text"></span>
+            </a>
+
+            @{
+                Html.RenderAction("MenuSideBar", "Home", new { Area = "Admin" });
+            }
+
+            <div class="main-content">
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <b>@ViewBag.Title</b>
+                        </li>
+                    </ul><!-- .breadcrumb -->
+
+
+                </div>
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            @RenderBody()
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
+
+
+        </div><!-- /.main-container-inner -->
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="icon-double-angle-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+
+</body>
+</html>
+<!-- ace scripts -->
+
+<script src="/assets/js/ace-elements.min.js"> </script>
+<script src="/assets/js/ace.min.js"> </script>
+
+<!-- inline scripts related to this page -->
+<script src="/assets/js/ace-extra.min.js"> </script>

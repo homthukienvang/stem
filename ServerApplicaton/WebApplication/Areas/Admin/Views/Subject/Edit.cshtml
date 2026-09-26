@@ -1,0 +1,84 @@
+﻿@using WebApplication.Helper @model Model.Subject
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cập nhất</h4>
+            </div>
+            @using (Html.BeginForm("Edit", "Subject", FormMethod.Post, new { @id = "CreateSubject" }))
+            {
+                <div class="modal-body">
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label  col-xs-12"> Mã môn học</label>
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(x => x.SubjectId, new { @class = "form-control", @placeholder = " Name" })
+                                    @Html.TextBoxFor(x => x.Code, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label  col-xs-12"> Tên môn học</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = " Tên môn học" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> Order</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Order, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> &nbsp;</label>
+                                <span class="control-label col-xs-12 ace-checkbox">
+                                    <label class="middle">
+                                        @Html.CheckBoxFor(x => x.IsLocked, new {@class = "ace form-control"})
+                                        <span class="lbl"> Khóa môn học này</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group  col-md-12">
+                                <label class="control-label col-xs-12"> Mô tả</label>
+                                <div class="col-xs-12">
+                                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clear-fix"></div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errormsg" class="error" style="display: inline-block;"></label>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Lưu
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Hủy
+                    </button>
+                </div>
+            }
+        </div>
+
+    </div>
+    <script>
+        jQuery(document).ready(function () {
+            $(".ace-checkbox").find("input[type='hidden']").remove();
+
+            App.Subject.initForm();
+        });
+
+    </script>
+</div>

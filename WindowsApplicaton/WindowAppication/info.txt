@@ -1,0 +1,25 @@
+﻿http://back.stemplus.vn/Admin/Home/Login
+admin/poki2001bacha@2015
+
+TK login test app: 
+	admin/123456 (db local)
+	nguyentrungducpoki/123456 (server)
+	testlogin/123456 (server)
+
+solid color: 	#238aca
+light:			#3da0dd
+
+FONT: UTM BryantLG
+
+- Thêm 2 tệp DLL vào thư mục Firefox bổ sung môi trường thiếu VCDIST (Gecko required): msvcp120,msvcr120
+- chưa update version + update bản đang chạy thật
+- remove package SQLCompact
+
+2021/03/12
+	- Remove object flash
+	- Using geckofx60.32 to Lunching ISPRING 10 html buiding
+
+
+2023/06/11
+	- upgrade version: 2.0.0.8
+	- Thêm bảng quản lý download, để xóa các file quá lâu	

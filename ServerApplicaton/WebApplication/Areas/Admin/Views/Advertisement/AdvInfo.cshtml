@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Quản lý quảng cáo";
+}
+@model  Model.Advertisement
+<!-- Modal -->
+<div id="AddForm"></div>
+<div class="row">
+
+</div>
+
+<style>
+    .validation-summary-errors {
+        color: red;
+        font-weight: bold;
+        list-style-type: none;
+    }
+</style>
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+
+            @using (Html.BeginForm("AdvInfo", "Advertisement", FormMethod.Post, new { @id = "AdvInfo" }))
+            {
+                <div class="">
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label  col-xs-12"> Tiêu đề</label>
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(x => x.Id, new {@class = "form-control", @placeholder = " Name"})
+                                    @Html.TextBoxFor(x => x.Title, new {@class = "form-control", @placeholder = " Name"})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label  col-xs-12"> Liên kết</label>
+                                <div class="col-xs-12">                                    
+                                    @Html.TextBoxFor(x => x.AdvLink, new {@class = "form-control",@maxlength="4000", @rows = 12})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label  col-xs-12"> Tổng số lần click</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.ClickLinkCount, new { @class = "form-control", @placeholder = " Name" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label  col-xs-12"> Nội dung quảng cáo</label>
+                                <div class="col-xs-12">                                    
+                                    @Html.TextAreaFor(x => x.AdvContent, new {@class = "form-control",@maxlength="4000", @rows = 12})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <label id="errormsg" class="error" style="display: inline-block;"></label>
+
+                    <button type="submit" class="btn btn-default btn-success ">
+                        <i class="fa fa-save"></i> Lưu
+                    </button>
+                </div>
+            }
+
+        </div><!-- /.table-responsive -->
+    </div><!-- /span -->
+</div><!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>

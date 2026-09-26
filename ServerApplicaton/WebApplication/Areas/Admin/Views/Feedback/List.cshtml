@@ -1,0 +1,92 @@
+﻿@model DataModel.Base.PagedData<Model.Feedback>
+<style>
+    
+</style>
+<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="center">
+                <label class="ace-checkbox">
+                    @Html.CheckBox("SelectAll", new { @class = "ace" })
+                    <span class="lbl"></span>
+                </label>
+            </th>
+            <td class="center" style="width:60px">ID GV</td>
+            <td style="width:120px">Tên giáo viên</td>
+            <td style="width:50px">Phone</td> 
+            <td style="width:100px">Email</td> 
+            <td style="width:100px">Ngày</td> 
+            <td style="width:100px">Bài học</td> 
+            <td style="width:100px">Lớp</td> 
+            <td>Ý kiến giáo viên</td> 
+            <td style="width:160px"></td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var feedback in Model.Data)
+            {
+                <tr class='@(feedback.Viewed?"":"bolder")'>
+                    <td class="">
+                    <label class="ace-checkbox">
+                        @Html.CheckBoxFor(x => feedback.Viewed, new { @class = "ace", @feedbackid = feedback.FeedbackId })
+                        <span class="lbl"></span>
+                    </label>
+                </td>
+                    <td class="center">
+                        @feedback.ClientId
+                    </td>
+
+                    <td>
+                        @feedback.Name
+                    </td>
+
+                    <td>
+                        @feedback.Phone
+                    </td>
+                    <td>
+                        @feedback.ClientAddress
+                    </td>
+
+                    <td>
+                       @feedback.CommentTime.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>@feedback.LessonName</td> 
+                    <td>@feedback.RoomName</td> 
+                    <td>
+						<div style='overflow:auto'>@feedback.Comment</div>
+					</td> 
+                    <td>
+                            <a href="#" onclick="App.Feedback.editFeedbackClick('@feedback.FeedbackId',this)" class="btn btn-xs btn-info">
+                                <i class="icon-search bigger-120"></i> Xem
+                            </a>
+                            <a href="#" onclick="App.Feedback.showAnswerClick('@feedback.FeedbackId',this)" class="btn btn-xs btn-info">
+                                <i class="icon-reply bigger-120"></i> Trả lời
+                            </a>
+                              @*<a href="#" onclick="App.Feedback.deleteFeedbackClick('@feedback.FeedbackId')" class="btn btn-xs btn-info">
+                                <i class="icon-trash bigger-120"></i>  Xóa
+                            </a>*@
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="10" align="right">
+                @{
+                    Html.RenderPartial("Pagination", Model.Pagination);
+                }
+            </td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<script>
+    $(".ace-checkbox").find("input[type='hidden']").remove();
+    $("#sample-table-1 #SelectAll").change(function () {
+        $("#sample-table-1 input[name^='feedback.Viewed']").prop("checked", this.checked);
+    });
+</script>

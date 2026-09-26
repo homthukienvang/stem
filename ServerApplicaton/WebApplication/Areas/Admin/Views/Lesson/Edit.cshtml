@@ -1,0 +1,142 @@
+﻿@using WebApplication.Helper @model Model.Lesson
+<div id="myModal" class="modal fade" role="dialog">
+
+    <script>
+    function removeFile(element) {
+        $(element).parent().remove();
+    }
+    $(document).ready(function () {
+        App.Common.UploadFile("#ImageUpload", function (data) {
+            $("#NormalImage").val(data.result.name);
+            $("#viewNormalImage").attr("src", "/Images/" + data.result.name);
+        });
+
+    });
+    </script>
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cập nhật</h4>
+            </div>
+            @using (Html.BeginForm("Edit", "Lesson", FormMethod.Post, new {@id = "CreateLesson"}))
+            {
+                <div class="modal-body">
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label  col-xs-12"> Mã bài học</label>
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(x => x.LessonId, new {@class = "form-control", @placeholder = " Name"})
+                                    @Html.TextBoxFor(x => x.Code, new {@class = "form-control"})
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12">Môn học</label>
+                                <div class="col-xs-12">
+                                    @Html.DropDownListFor(x => x.SubjectId, new SelectList(ViewBag.Subjects, "SubjectId", "Name"), "", new {@class = "form-control input-sm"})
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12">Lớp học</label>
+                                <div class="col-xs-12">
+                                    @Html.DropDownListFor(x => x.RoomId, new SelectList(ViewBag.Rooms, "RoomId", "Name"), "", new {@class = "form-control input-sm"})
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label class="control-label  col-xs-12"> Tên bài học</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-4">
+                                <label class="control-label col-xs-12"> Order</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Order, new {@class = "form-control"})
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> &nbsp;</label>
+                                <span class="control-label col-xs-12 ace-checkbox">
+                                    <label class="middle">
+                                        @Html.CheckBoxFor(x => x.IsLocked, new {@class = "ace form-control"})
+                                        <span class="lbl"> Khóa bài học này</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div id="ImageUpload">
+                                <div class="file_name">
+
+                                </div>
+                                @Html.HiddenFor(x => x.NormalImage, new {@class = "form-control"})
+                                <div style="border: 1px #ddd solid; clear: both; display: block; width: auto; float: left; margin: 5px; padding: 5px;">
+                                    <img id="viewNormalImage" style="display: block; width: auto;" src="@string.Format("/Images/{0}", Model.NormalImage)"/>
+
+                                </div>
+                                <span class="btn btn-xs btn-primary fileinput-button " style="margin-top: 10px">
+                                    <i class="fa fa-plus-circle"></i> Thay đổi
+                                    <input id="fileuploadIcon" class="fileupload" type="file" name="files[]">
+                                </span>
+                                <div class="progress" style="display: none">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                        <span class="sr-only">0% Complete</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group  col-md-12">
+                                <label class="control-label col-xs-12"> Mô tả</label>
+                                <div class="col-xs-12">
+                                    @Html.TextAreaFor(x => x.Description, new {@class = "form-control"})
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="clear-fix"></div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <label id="errormsg" class="error" style="display: inline-block;"></label>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Lưu
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Hủy
+                    </button>
+                </div>
+            }
+        </div>
+
+    </div>
+    <script>
+        jQuery(document)
+            .ready(function() {
+                $(".ace-checkbox").find("input[type='hidden']").remove();
+
+                App.Lesson.initForm();
+            });
+
+    </script>
+</div>

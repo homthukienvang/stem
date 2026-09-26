@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Quản lý ý kiến khách hàng";
+}
+@model DataModel.Base.PagedData<Model.Feedback>
+<script src="~/assets/adminjs/feedback.js?v=6"></script>
+<style>
+    .clientsearchbox {
+        width: 130px !important;
+        float: left;
+        margin-right: 5px;
+    }
+</style>
+<!-- Modal -->
+<div id="AddForm"></div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="pull-left" style="margin-bottom: 10px">
+            <input id="tId" name="tId" placeholder="ID giáo viên" class="clientsearchbox" type="text" value="">
+            <input id="tFullName" name="tFullName clientsearchbox" placeholder="Tên GV" class="clientsearchbox" type="text" value="">
+            <input id="tClass" name="tClass" placeholder="Mã Lớp" class="clientsearchbox" type="text" value="">
+            <input id="tSchoolCode" name="tSchoolCode" style="display: none" placeholder="Mã trường" class="clientsearchbox" type="text" value="">
+            <input id="tLessonCode" name="tLessonCode" placeholder="Mã bài học" class="clientsearchbox" type="text" value="">
+            <input class="datepicker clientsearchbox" placeholder="Từ ngày" id="tBeginDate" name="BeginDate" type="text">
+            <input class="datepicker clientsearchbox" placeholder="đến ngày" id="tEndDate" name="EndDate" type="text">
+            <select class="form-control input-sm clientsearchbox" data-val="true" id="ddlViewed" name="ddlViewed">
+                <option value="-1" selected="selected">Toàn bộ</option>
+                <option value="1">Hoàn thành</option>
+                <option value="0">Chưa hoàn thành</option>
+            </select>
+            <button onclick="Search()" class="btn btn-xs btn-primary">
+                <i class="fa fa-search"></i>
+                Tìm kiếm
+            </button>
+
+        </div>
+        <!-- #nav-search -->
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="pull-left" style="margin-top: 10px;">
+            <a href="#" onclick="App.Feedback.finishFeedbackClick(true)" class="btn btn-xs btn-success">
+                <i class="icon-lock bigger-120"></i>Hoàn thành hỗ trợ
+            </a>
+            <a href="#" onclick="App.Feedback.exportFeedbakClick()" class="btn btn-xs btn-success">
+                <i class="icon-download bigger-120"></i>Export kết quả
+            </a>
+
+            <label id="errormsg" class="error" style="display: inline-block;"></label>
+        </div>
+        <br />
+        <br />
+
+        <div class="table-responsive">
+            <div id="result">
+                @{
+                    Html.RenderPartial("List", Model);
+                }
+            </div>
+
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /span -->
+</div>
+<!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('.datepicker').datepicker({
+            orientation: 'bottom',
+            autoclose: true,
+            startDate: '1/1/1900',            
+            language: 'vi',
+            todayBtn: "linked"
+        });
+    });
+</script>

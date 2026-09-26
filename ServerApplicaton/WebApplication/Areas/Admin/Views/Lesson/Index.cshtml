@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Quản lý bài học";
+}
+@model DataModel.Base.PagedData<Model.Lesson>
+    <script src="~/assets/adminjs/lesson.js?v=1122"></script>
+    <script>
+        jQuery(document).ready(function () {
+            var urlA = '/Lesson/GetSubject';
+            $.get(urlA).success(function (data) {
+
+                $.each(data.Data, function (id, option) {
+                    $("#tSubjectId").append($('<option></option>').val(option.SubjectId).html(option.Name));
+                });
+            });
+            $("#tSubjectId").change(function () {
+                var selectedItem = $(this).val();
+
+                var ddlroom = $("#tRoomId");
+                ddlroom.html('');
+                ddlroom.append($('<option></option>').val(0).html('--Lớp học--'));
+                var urlA = '/Lesson/GetRoom/' + selectedItem;
+                $.get(urlA).success(function (data) {
+
+                    $.each(data.Data, function (id, option) {
+                        ddlroom.append($('<option></option>').val(option.RoomId).html(option.Name));
+
+                    });
+                });
+            });
+        });
+
+    </script>
+
+    <div id="AddForm"></div>
+    <div class="row">
+        <div class="col-xs-12" style="margin-bottom: 10px">
+            <div class="pull-left">
+                <button data-toggle="modal" id="AddLesson" onclick="App.Lesson.addLessonClick()" class="btn btn-xs btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Thêm mới
+                </button>
+                <a href="#" onclick="App.Lesson.exportLessonClick()" class="btn btn-xs btn-success">
+                    <i class="icon-download bigger-120"></i> Export kết quả
+                </a>
+                <a href="#" onclick="App.Lesson.lockLessonClick(true)" class="btn btn-xs btn-warning">
+                    <i class="icon-lock bigger-120"></i> Khóa
+                </a>
+                <a href="#" onclick="App.Lesson.lockLessonClick(false)" class="btn btn-xs btn-success">
+                    <i class="icon-unlock bigger-120"></i> Mở Khóa
+                </a>
+                <a href="#" onclick="App.Lesson.deleteLessons()" class="btn btn-xs btn-danger">
+                    <i class="icon-trash bigger-120"></i> Xóa
+                </a>
+                <label id="errormsg" class="error" style="display: inline-block;"></label>
+            </div>
+            <div>
+                <div class="pull-right">
+                    <input id="keyword" name="keyword" placeholder="Tìm kiếm mã/tên bài học" class="lessonsearchbox" style="width: 240px" type="text" value="">
+                    <select id="tSubjectId" name="rSubjectId">
+                        <option value="0">--Môn học---</option>
+                    </select> <select id="tRoomId" name="tRoomId">
+                        <option value="0">--Lớp học--</option>
+                    </select>
+                    <button onclick="Search()" class="btn btn-xs btn-primary">
+                        <i class="fa fa-search"></i>
+                        Tìm kiếm
+                    </button>
+                </div><!-- #nav-search -->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right">
+            </div><!-- #nav-search -->
+        </div>
+    </div>
+
+    <div class="clear-fix"></div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <div id="result">
+                    @{
+                        Html.RenderPartial("List", Model);
+                    }
+                </div>
+
+            </div><!-- /.table-responsive -->
+        </div><!-- /span -->
+    </div><!-- /row -->
+
+    <div class="hr hr-18 dotted hr-double"></div>

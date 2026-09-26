@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Quản lý thông báo";
+}
+@model  Model.News
+<!-- Modal -->
+<div id="AddForm"></div>
+<div class="row">
+
+</div>
+
+<style>
+    .validation-summary-errors {
+        color: red;
+        font-weight: bold;
+        list-style-type: none;
+    }
+</style>
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+
+            @using (Html.BeginForm("NewInfo", "News", FormMethod.Post, new { @id = "NewInfo" }))
+            {
+                <div class="">
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label  col-xs-12"> Tiêu đề</label>
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(x => x.NewsId, new {@class = "form-control", @placeholder = " Name"})
+                                    @Html.TextBoxFor(x => x.Title, new {@class = "form-control", @placeholder = " Name"})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label class="control-label  col-xs-12"> Nội dung thông báo</label>
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(x => x.ImageUrl, new {@class = "form-control", @placeholder = " Name"})
+                                    @Html.TextAreaFor(x => x.Description, new {@class = "form-control",@maxlength="4000", @rows = 12})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear-fix"></div>
+                    </div>
+
+
+                </div>
+                <div class="pull-right">
+                    <label id="errormsg" class="error" style="display: inline-block;"></label>
+
+                    <button type="submit" class="btn btn-default btn-success ">
+                        <i class="fa fa-save"></i> Lưu
+                    </button>
+                </div>
+            }
+
+        </div><!-- /.table-responsive -->
+    </div><!-- /span -->
+</div><!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>
+<script>
+    CKEDITOR.replace('Description', {
+        customConfig: '/ckeditor/configsub.js'
+    });
+</script>

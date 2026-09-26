@@ -1,0 +1,2 @@
+app|version|release date|url|file
+updateme|7.0.0.9|06/09/2018|http://test.poki.vn/version_update_filesv2/|um.zip

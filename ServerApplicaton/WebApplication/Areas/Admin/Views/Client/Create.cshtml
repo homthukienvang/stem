@@ -1,0 +1,162 @@
+﻿@using WebApplication.Helper
+@model Model.Client
+
+@*<script src="~/assets/js/chosen.jquery.js"></script>*@
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thêm mới</h4>
+            </div>
+            @using (Html.BeginForm("Create", "Client", FormMethod.Post, new { @id = "CreateClient" }))
+            {
+                <div class="modal-body">
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label  col-xs-12"> Tên đăng nhập</label>
+                                <div class="col-xs-12">
+                                    @Html.HiddenFor(x => x.ClientId, new { @class = "form-control", @placeholder = " Name" })
+                                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label  col-xs-12"> Họ tên</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Họ Tên " })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="control-label  col-xs-12"> Mật khẩu</label>
+                                <div class="col-xs-12">
+                                    @Html.PasswordFor(x => x.PassWork, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="control-label  col-xs-12"> Xác nhận mật khẩu</label>
+                                <div class="col-xs-12">
+                                    @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> Phone</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> Lớp</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                        </div>
+                         <div class="row">
+
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12">Trường</label>
+                                <div class="col-xs-12">                                    
+                                    @Html.DropDownListFor(x => x.SchoolCode, new SelectList(ViewBag.SchoolCodes, "Code", "Name"), "", new { @class = "form-control input-sm" }) @*class=chosen-select*@
+                                </div>
+                            </div> 
+                             <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> Địa chỉ email</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+                                </div>
+                            </div>
+                         </div> 
+                        
+                        <div class="row">
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> Mã tỉnh thành</label>
+                                @Html.TextBoxFor(x => x.CityCode, new { @class = "form-control"})
+                            </div>
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> Mã quận huyện</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.DistrictCode, new { @class = "form-control"})
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="row">
+
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> Địa chỉ máy tính</label>
+                                <div class="col-xs-12">
+                                    @Html.TextBoxFor(x => x.MacIp, new { @class = "form-control", @disabled = "disabled" })
+                                </div>
+                            </div>
+                         
+                            <div class="form-group  col-md-6">
+                                <label class="control-label col-xs-12"> &nbsp;</label>
+                                <span class="control-label col-xs-12 ace-checkbox">
+                                    <label class="middle">
+                                        @Html.CheckBoxFor(x => x.IsLock, new { @class = "ace form-control" })
+                                        <span class="lbl"> Khóa giáo viên này</span>
+                                    </label>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        @*<div class="row">
+                            <div class="form-group  col-md-12">
+                                <span class="control-label col-xs-12 ace-checkbox">
+                                    <label class="middle">
+                                        @Html.CheckBoxFor(x => x.FullLesson, new { @class = "ace form-control" })
+                                        <span class="lbl"> Cho phép giáo viên sử dụng toàn bộ bài học</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>*@
+                        <div class="clear-fix"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <label id="errormsg" class="error" style="display: inline-block;"></label>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Lưu
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Hủy
+                    </button>
+                </div>
+            }
+        </div>
+
+    </div>
+    <script>
+        jQuery(document).ready(function () {
+
+            //$(function () {
+            //    $('.chosen-select').chosen();
+            //    //$('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+            //});
+
+            $(".ace-checkbox").find("input[type='hidden']").remove();
+
+            App.Client.initForm();
+
+            $("#SchoolCode").change(function () {
+                var selectedItem = $(this).val();
+                var urlA = '/Client/GetSchool/?schoolcode=' + selectedItem;
+                $.get(urlA).success(function (data) {
+                    $("#CityCode").val(data.Data.CityCode);
+                    $("#DistrictCode").val(data.Data.DistrictCode);
+                });
+            });
+        });
+
+    </script>
+</div>

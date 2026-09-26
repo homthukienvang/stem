@@ -1,0 +1,6 @@
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Extensions\bin\Release\Extensions.dll
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Extensions\bin\Release\Extensions.pdb
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Extensions\obj\Release\Extensions.csproj.AssemblyReference.cache
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Extensions\obj\Release\Extensions.csproj.CoreCompileInputs.cache
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Extensions\obj\Release\Extensions.dll
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Extensions\obj\Release\Extensions.pdb

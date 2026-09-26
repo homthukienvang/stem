@@ -1,0 +1,103 @@
+﻿@using System.Linq
+@model  Model.Client
+@{
+    //filter list with remove none item lesson
+    var roomIds = Model.ClientLessons.Select(x => x.RoomId).Distinct();
+    var rooms = Model.Rooms.Where(x => roomIds.Contains(x.RoomId)).OrderBy(x => x.Name).ToList();
+    var subjectIds = Model.Rooms.Where(x => roomIds.Contains(x.RoomId)).Select(x => x.SubjectId).Distinct();
+    var subjects = Model.Subjects.Where(x => subjectIds.Contains(x.SubjectId)).OrderBy(x => x.Name).ToList();
+}
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 900px">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bài học đã cấp cho giáo viên</h4>
+            </div>
+            @using (Html.BeginForm())
+            {
+                <div class="modal-body" style="height: 550px; overflow: auto">
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(x => x.ClientId)
+                    @foreach (var sub in subjects)
+                    {
+                        var roomInSubs = rooms.Where(x => x.SubjectId == sub.SubjectId).ToList();
+                        //check has any lesson
+                        var ids = roomInSubs.Select(x => x.RoomId).ToArray();
+                        var lesInRooms = Model.ClientLessons.Where(x => ids.Contains(x.RoomId) && x.IsSelected).ToList();
+                        if (!lesInRooms.Any())
+                        {
+                            continue;
+                        }
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="form-group col-md-12" style="border-bottom: 1px solid #ddd;">
+                                <label class="control-label  col-xs-12"><b>Môn học:</b><b style="color: blue"> @sub.Name</b></label>
+                            </div>
+                            @foreach (var room in roomInSubs)
+                            {
+                                var lst = lesInRooms.Where(x => x.RoomId == room.RoomId).OrderBy(x => x.Name).ToList();
+                                if (!lst.Any())
+                                {
+                                    continue;
+                                }
+                                <div style="width:100%; float:left">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd;width:100%">
+                                        <label class="control-label  col-xs-8"><b style="color: blue"> @room.Name</b></label>
+                                        <span class="control-label col-xs-2 ace-checkbox">
+                                            <label class="middle">
+                                                @Html.CheckBox("ShowLesson", new { @roomid = room.RoomId, @class = "ace form-control" })
+                                                <span class="lbl" style="color: blue"> Hiện/Ẩn</span>
+                                            </label>
+                                        </span>
+                                        <div class="ShowLessonGroup" style="display: none;margin-left: 10px;" roomid="@room.RoomId">
+                                            @{
+                                                foreach (var les in lst)
+                                                {
+                                                    <div class="col-md-6">
+                                                        <span class="ace-checkbox">
+                                                            <label class="middle">
+                                                                @Html.CheckBoxFor(x => les.IsSelected, new { disabled = "disabled", @roomid = room.RoomId, @class = "IsSelected ace form-control", lessonid = les.LessonId })
+                                                                <span class="lbl"> @les.Name</span>
+                                                            </label>
+                                                        </span>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+
+                                    </div>
+                                </div>
+                                                }
+                        </div>
+                                                }
+                    <div class="clear-fix"></div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <i class="fa fa-close"></i> Hủy
+                    </button>
+                </div>
+                                                }
+        </div>
+
+    </div>
+    <script>
+        jQuery(document).ready(function () {
+            $(".ace-checkbox").find("input[type='hidden']").remove();
+            App.Client.initClientLessons();
+            $("input[name='ShowLesson']").change(function () {
+                var roomid = $(this).attr("roomid");
+                if ($(this).is(":checked")) {
+
+                    $(".ShowLessonGroup[roomid='" + roomid + "']").show();
+                } else {
+
+                    $(".ShowLessonGroup[roomid='" + roomid + "']").hide();
+                }
+            });
+        });
+
+    </script>
+</div>

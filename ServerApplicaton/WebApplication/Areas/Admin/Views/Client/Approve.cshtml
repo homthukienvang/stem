@@ -1,0 +1,89 @@
+﻿@model DataModel.Base.PagedData<Model.Client>
+@{
+    ViewBag.Title = "Quản lý giáo viên: Phê duyệt - cho phép giáo viên sử dụng phần mềm ";
+}
+<style>
+    .clientsearchbox {
+        width: 130px !important;
+        float: left;
+        margin-right: 5px;
+    }
+</style>
+<script src="~/assets/adminjs/clientapprover.js"></script>
+<!-- Modal -->
+<div id="AddForm"></div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="pull-left">
+            <input id="tClass" name="tClass" class="clientsearchbox" placeholder="Lớp" type="text" value="">
+            <input id="tSchoolCode" name="tSchoolCode" class="clientsearchbox" placeholder="Mã trường" type="text" value="">
+            <input id="tCityCode" name="tCityCode" class="clientsearchbox" placeholder="Mã tỉnh/thành" type="text" value="">
+            <input id="tDistrictCode" name="tDistrictCode" class="clientsearchbox" placeholder="Mã quận/huyện" type="text" value="">
+            <input id="tFullName" name="tFullName" class="clientsearchbox" placeholder="Username" type="text" value="">
+            <select class="form-control input-sm clientsearchbox" data-val="true" id="ddlApproved" name="ddlApproved">
+                <option value="-1" selected="selected">Toàn bộ</option>
+                <option value="0">Chờ duyệt</option>
+                <option value="1">Đã duyệt</option>
+            </select>
+            <button onclick="Search()" class="btn btn-xs btn-primary">
+                <i class="fa fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+    <div class="col-xs-12" style="margin-bottom: 10px">
+
+        <!-- #nav-search -->
+        <div class="pull-left" style="margin-top: 10px;">
+            @*<button data-toggle="modal" id="AddClient" onclick="App.Client.addClientClick()" class="btn btn-xs btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Thêm mới
+                </button>
+                <a href="@Url.Action("ImportClient")" class="btn btn-xs btn-primary">
+                    <i class="fa fa-play-circle"></i>
+                    Import giáo viên
+                </a>
+
+                <a href="#" onclick="App.Client.showLessonListClientClick()" class="btn btn-xs btn-info">
+                    <i class="icon-file bigger-120"></i> Cập nhật bài học
+                </a>*@
+
+            <a href="#" onclick="App.Client.approveClientClick()" class="btn btn-xs btn-info btn-success">
+                <i class="icon-file bigger-120"></i> Phê duyệt tài khoản
+            </a>
+
+            <a href="#" onclick="App.Client.exportListClientClick()" class="btn btn-xs btn-success">
+                <i class="icon-download bigger-120"></i> Export kết quả
+            </a>
+            <label id="errormsg" class="error" style="display: inline-block;"></label>
+        </div>
+        <br />
+        <br />
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <div id="result">
+                @{
+                    Html.RenderPartial("ListApprove", Model);
+                }
+
+            </div>
+
+        </div><!-- /.table-responsive -->
+    </div><!-- /span -->
+</div><!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>
+
+
+<script>
+    $(".ace-checkbox").find("input[type='hidden']").remove();
+    $("#sample-table-1 #SelectAll").change(function () {
+        $("#sample-table-1 input[name^='client.IsSelected']").prop("checked", this.checked);
+    });
+</script>

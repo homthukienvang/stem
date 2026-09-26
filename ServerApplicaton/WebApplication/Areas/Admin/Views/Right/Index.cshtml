@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Quản lý Right";
+}
+@model   DataModel.Base.PagedData<Model.Right>
+<link href="~/assets/js/jquery.treeview/jquery.treeview.css" rel="stylesheet" />
+<script src="~/assets/js/jquery.treeview/jquery.treeview.js"></script>
+<script src="~/assets/adminjs/right.js"></script>
+     
+<style>
+    .treeview span {
+        float: left;
+        margin-right: 10px;
+    }
+
+        .treeview span a {
+            color: red;
+        }
+</style>
+<!-- Modal -->
+<div id="AddForm"></div>
+
+
+<div class="row">
+    <div class="col-xs-12" style="margin-bottom: 10px">
+        <div class="pull-left">
+            <button data-toggle="modal" id="AddRight" class="btn btn-xs btn-primary">
+                <i class="fa fa-plus"></i>
+                Thêm mới
+            </button>
+        </div>
+        <div class="pull-right">
+
+        </div><!-- #nav-search -->
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-6">
+        <div class="table-responsive">
+
+            <div id="result">
+                @{
+                    Html.RenderPartial("List", Model);
+                }
+            </div>
+
+        </div><!-- /.table-responsive -->
+    </div><!-- /span -->
+    <div class="col-xs-6">
+        
+    </div><!-- /row -->
+</div><!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>

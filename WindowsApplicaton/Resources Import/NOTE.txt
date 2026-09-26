@@ -1,0 +1,3 @@
+﻿Các file trong này được sử dụng sau khi build thành công cần tạo bản cài đặt, vì project import thiếu.
+
+Riêng file UM.TXT (và file ZIP tương ứng) nếu sử dụng khi có bản UPDATE thì cần đưa lên thư mục trên Server chứ ko đóng gói vào sản phẩm.

@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Quản lý môn học";
+}
+@model DataModel.Base.PagedData<Model.Subject>
+<script src="~/assets/adminjs/subject.js"></script> 
+<!-- Modal -->
+<div id="AddForm"></div>
+<div class="row">
+    <div class="col-xs-12" style="margin-bottom: 10px">
+        <div class="pull-left">
+            <button data-toggle="modal" id="AddSubject" onclick="App.Subject.addSubjectClick()" class="btn btn-xs btn-primary">
+                <i class="fa fa-plus"></i>
+                Thêm mới
+            </button>
+        </div>
+        <div class="pull-right">
+           
+        </div><!-- #nav-search -->
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <div id="result">
+                @{
+                    Html.RenderPartial("List", Model);
+                }
+            </div>
+
+        </div><!-- /.table-responsive -->
+    </div><!-- /span -->
+</div><!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>

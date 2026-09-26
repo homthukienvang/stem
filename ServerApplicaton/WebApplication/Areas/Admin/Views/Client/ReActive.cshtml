@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Kích hoạt tài khoản giáo viên";
+}
+@model DataModel.Base.PagedData<Model.Client>
+<script src="~/assets/adminjs/clientreactive.js?v=2"></script>
+
+<style>
+    .clientsearchbox {
+        width: 130px !important;
+        float: left;
+        margin-right: 5px;
+    }
+</style>
+
+<!-- Modal -->
+<div id="AddForm"></div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="pull-left" style="margin-bottom: 10px">
+            <input id="tClass" name="tClass" placeholder="Lớp" class="clientsearchbox" type="text" value="">
+            <input id="tSchoolCode" name="tSchoolCode" placeholder="Mã trường" class="clientsearchbox" type="text" value="">
+            <input id="tCityCode" name="tCityCode" placeholder="Mã tỉnh/thành" class="clientsearchbox" type="text" value="">
+            <input id="tDistrictCode" name="tDistrictCode" placeholder="Mã quận/huyện" class="clientsearchbox" type="text" value="">
+            <input id="tFullName" name="tFullName" placeholder="Username" class="clientsearchbox" type="text" value="">
+            <select class="form-control input-sm clientsearchbox" data-val="true" id="ddlApproved" name="ddlApproved">
+                <option value="1">Đã duyệt</option>
+            </select>   
+         <button onclick="Search()" class="btn btn-xs btn-primary">
+                <i class="fa fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div><!-- #nav-search -->
+    </div>
+    <div class="col-xs-12" style="margin-bottom: 10px">
+        <div class="pull-left">
+            <a href="#" onclick="App.Client.reactiveClientClick()" class="btn btn-xs btn-warning">
+                <i class="icon-unlock bigger-120"></i> Kích hoạt
+            </a>
+            <label id="errormsg" class="error" style="display: inline-block;"></label>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <div id="result">
+                @{
+                    Html.RenderPartial("ListReactive", Model);
+                }
+            </div>
+
+        </div><!-- /.table-responsive -->
+    </div><!-- /span -->
+</div><!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>

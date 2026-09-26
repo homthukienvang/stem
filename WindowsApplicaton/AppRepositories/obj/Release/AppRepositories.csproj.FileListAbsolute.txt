@@ -1,0 +1,11 @@
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\bin\Release\Repositories.dll
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\bin\Release\Repositories.pdb
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\bin\Release\Extensions.dll
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\bin\Release\Model.dll
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\bin\Release\Model.pdb
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\bin\Release\Extensions.pdb
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\obj\Release\AppRepositories.csproj.AssemblyReference.cache
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\obj\Release\AppRepositories.csproj.CoreCompileInputs.cache
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\obj\Release\AppRepos.1475F6D4.Up2Date
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\obj\Release\Repositories.dll
+D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppRepositories\obj\Release\Repositories.pdb
