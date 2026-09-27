@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -8,8 +9,9 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DXWindows.Helper;
 using Extensions;
-using Gecko;
 using log4net;
+using Microsoft.Web.WebView2.Core;
+using Microsoft.Web.WebView2.WinForms;
 using Model;
 using Newtonsoft.Json;
 using Services;
@@ -37,31 +39,50 @@ namespace DXWindows
             lblWaiting.Left = Screen.PrimaryScreen.WorkingArea.Width / 2 - lblWaiting.Text.Length;
             lblWaiting.Top = Screen.PrimaryScreen.WorkingArea.Height / 2;
 
-            geckoBrowser.Navigated += GeckoBrowser_Navigated;
-            geckoBrowser.WindowClosed += GeckoBrowser_WindowClosed;
-            geckoBrowser.DocumentCompleted += GeckoBrowser_DocumentCompleted;
+            webView.CreationProperties = new CoreWebView2CreationProperties
+            {
+                UserDataFolder = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "STEMPlus", "WebView2")
+            };
+            webView.CoreWebView2InitializationCompleted += WebView_CoreWebView2InitializationCompleted;
+            webView.NavigationCompleted += WebView_NavigationCompleted;
         }
 
-        private void GeckoBrowser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
+        private void WebView_CoreWebView2InitializationCompleted(object sender, CoreWebView2InitializationCompletedEventArgs e)
         {
-            var geckoWeb = (GeckoWebBrowser)sender;
-            var txt = geckoWeb.Document.Body.InnerHtml;
-            if (txt.Contains("Thank you for exiting the content."))
+            if (!e.IsSuccess)
             {
-                _log.Debug("gecko DocumentCompleted");
-                this.Close();
+                _log.Error("CoreWebView2 initialization failed", e.InitializationException);
+                return;
+            }
+
+            webView.CoreWebView2.WindowCloseRequested += (s, args) => this.Close();
+            webView.CoreWebView2.DOMContentLoaded += WebView_DOMContentLoaded;
+        }
+
+        private async void WebView_DOMContentLoaded(object sender, CoreWebView2DOMContentLoadedEventArgs e)
+        {
+            try
+            {
+                var json = await webView.CoreWebView2.ExecuteScriptAsync("document.body.innerText");
+                var text = JsonConvert.DeserializeObject<string>(json);
+                if (text != null && text.Contains("Thank you for exiting the content."))
+                {
+                    _log.Debug("webview DOMContentLoaded - exit marker found");
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
             }
         }
 
-        private void GeckoBrowser_WindowClosed(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void GeckoBrowser_Navigated(object sender, Gecko.GeckoNavigatedEventArgs e)
+        private void WebView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             lblWaiting.Visible = false;
-            geckoBrowser.Visible = true;
+            webView.Visible = true;
         }
 
         //        void frmViewWeb_KeyDown(object sender, KeyEventArgs e)
@@ -99,7 +120,7 @@ namespace DXWindows
                     SynDownloadCount(Globals.Userlogin.ClientId, CurrentLesson.LessonId);
                 }
 
-                geckoBrowser.Navigate(FilePath);
+                webView.Source = new Uri(FilePath);
             }
             catch (Exception ex)
             {
@@ -230,7 +251,7 @@ namespace DXWindows
         }
         private void frmViewWeb_MaximumSizeChanged(object sender, EventArgs e)
         {
-            geckoBrowser.Visible = true;
+            webView.Visible = true;
         }
 
         private void picMouseHover(object sender, EventArgs e)

@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -187,10 +186,6 @@ namespace DXWindows
                         macIp = macIp.Substring(0, 50);
 
                     var clientService = new ClientService();
-
-                    //init optional for HTTPS authentication
-                    if (GlobalSession.BaseApiUrl.StartsWith("https"))
-                        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 
                     using (var client = new HttpClient())
                     {

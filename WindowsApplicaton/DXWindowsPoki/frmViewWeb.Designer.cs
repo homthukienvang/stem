@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Gecko;
+using Microsoft.Web.WebView2.WinForms;
 
 namespace DXWindows
 {
@@ -44,7 +44,7 @@ namespace DXWindows
             this.pnMain = new DevExpress.XtraEditors.PanelControl();
             this.pnView = new DevExpress.XtraEditors.PanelControl();
             this.lblWaiting = new System.Windows.Forms.Label();
-            this.geckoBrowser = new GeckoWebBrowser();
+            this.webView = new WebView2();
             this.pnHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnUtil)).BeginInit();
             this.pnUtil.SuspendLayout();
@@ -56,6 +56,7 @@ namespace DXWindows
             this.pnMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnView)).BeginInit();
             this.pnView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView)).BeginInit();
             this.SuspendLayout();
             // 
             // alertControl1
@@ -188,7 +189,7 @@ namespace DXWindows
             // pnView
             // 
             this.pnView.Controls.Add(this.lblWaiting);
-            this.pnView.Controls.Add(this.geckoBrowser);
+            this.pnView.Controls.Add(this.webView);
             this.pnView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnView.Location = new System.Drawing.Point(0, 38);
             this.pnView.Name = "pnView";
@@ -205,18 +206,20 @@ namespace DXWindows
             this.lblWaiting.Size = new System.Drawing.Size(50, 13);
             this.lblWaiting.TabIndex = 8;
             this.lblWaiting.Text = "xin đợi...";
-           
-            // 
-            // geckoBrowser
-            // 
-            this.geckoBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.geckoBrowser.Location = new System.Drawing.Point(2, 2);
-            this.geckoBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.geckoBrowser.Name = "geckoBrowser";
-            this.geckoBrowser.Size = new System.Drawing.Size(1050, 625);
-            this.geckoBrowser.TabIndex = 9;
-            this.geckoBrowser.Visible = false;
-            // 
+
+            //
+            // webView
+            //
+            this.webView.CreationProperties = null;
+            this.webView.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webView.Location = new System.Drawing.Point(2, 2);
+            this.webView.Name = "webView";
+            this.webView.Size = new System.Drawing.Size(1050, 625);
+            this.webView.TabIndex = 9;
+            this.webView.Visible = false;
+            this.webView.ZoomFactor = 1D;
+            //
             // frmViewWeb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +247,7 @@ namespace DXWindows
             ((System.ComponentModel.ISupportInitialize)(this.pnView)).EndInit();
             this.pnView.ResumeLayout(false);
             this.pnView.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,6 +266,6 @@ namespace DXWindows
         private DevExpress.XtraEditors.PanelControl pnMain;
         private System.Windows.Forms.Label lblWaiting;
         private DevExpress.XtraEditors.PanelControl pnView;
-        private GeckoWebBrowser geckoBrowser;
+        private WebView2 webView;
     }
 }

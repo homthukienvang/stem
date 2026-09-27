@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 using Model;
@@ -30,8 +31,11 @@ namespace DXWindows
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           
+
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
+            // Ép TLS1.2/1.1/1.0 cho toàn bộ HttpClient/WebRequest của app, set trước mọi request HTTPS
+            // (tránh lỗi "Could not create SSL/TLS secure channel" trên máy Windows không dùng protocol mặc định phù hợp)
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             Application.Run(new frmLogin());
         }
     }

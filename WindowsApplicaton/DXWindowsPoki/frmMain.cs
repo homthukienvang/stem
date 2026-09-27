@@ -4,7 +4,6 @@ using DevExpress.XtraEditors;
 using DXWindows.Helper;
 using DXWindows.UserControl;
 using Extensions;
-using Gecko;
 using log4net;
 using Model;
 using Model.Model;
@@ -98,10 +97,6 @@ namespace DXWindows
                 //load version label
                 CurrentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 lblVersion.Text += CurrentVersion;
-
-                //load GeckoFx45
-                Xpcom.EnableProfileMonitoring = false;
-                Xpcom.Initialize("Firefox");
             }
             catch (Exception ex)
             {

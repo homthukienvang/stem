@@ -174,11 +174,13 @@
     <Reference Include="DeviceId.Windows.Wmi, Version=6.6.0.0, Culture=neutral, PublicKeyToken=f755c371b5c59c52, processorArchitecture=MSIL">
       <HintPath>..\WindowAppication\packages\DeviceId.Windows.Wmi.6.6.0\lib\net40\DeviceId.Windows.Wmi.dll</HintPath>
     </Reference>
-    <Reference Include="Geckofx-Core, Version=60.0.55.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
-      <HintPath>..\WindowAppication\packages\Geckofx60.32.60.0.55\lib\net45\Geckofx-Core.dll</HintPath>
+    <Reference Include="Microsoft.Web.WebView2.Core">
+      <HintPath>..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.2592.51\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Geckofx-Winforms, Version=60.0.55.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
-      <HintPath>..\WindowAppication\packages\Geckofx60.32.60.0.55\lib\net45\Geckofx-Winforms.dll</HintPath>
+    <Reference Include="Microsoft.Web.WebView2.WinForms">
+      <HintPath>..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.2592.51\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\Resources Import\Ionic.Zip.dll</HintPath>
@@ -512,7 +514,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Firefox\omni.ja" />
     <None Include="packages.config" />
     <None Include="pdf\bqtg_1.pdf" />
     <None Include="pdf\bqtg_2.pdf" />
@@ -561,81 +562,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="favicon.ico" />
-    <Content Include="Firefox\AccessibleHandler.dll" />
-    <Content Include="Firefox\AccessibleMarshal.dll" />
-    <Content Include="Firefox\api-ms-win-core-console-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-console-l1-2-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-datetime-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-debug-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-errorhandling-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-file-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-file-l1-2-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-file-l2-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-handle-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-heap-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-interlocked-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-libraryloader-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-localization-l1-2-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-memory-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-namedpipe-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-processenvironment-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-processthreads-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-processthreads-l1-1-1.dll" />
-    <Content Include="Firefox\api-ms-win-core-profile-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-rtlsupport-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-string-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-synch-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-synch-l1-2-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-sysinfo-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-timezone-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-core-util-l1-1-0.dll" />
-    <Content Include="Firefox\API-MS-Win-core-xstate-l2-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-conio-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-convert-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-environment-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-filesystem-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-heap-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-locale-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-math-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-multibyte-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-private-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-process-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-runtime-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-stdio-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-string-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-time-l1-1-0.dll" />
-    <Content Include="Firefox\api-ms-win-crt-utility-l1-1-0.dll" />
-    <Content Include="Firefox\breakpadinjector.dll" />
-    <Content Include="Firefox\concrt140.dll" />
-    <Content Include="Firefox\d3dcompiler_47.dll" />
-    <Content Include="Firefox\freebl3.dll" />
-    <Content Include="Firefox\IA2Marshal.dll" />
-    <Content Include="Firefox\icudt58.dll" />
-    <Content Include="Firefox\icuin58.dll" />
-    <Content Include="Firefox\icuuc58.dll" />
-    <Content Include="Firefox\lgpllibs.dll" />
-    <Content Include="Firefox\libEGL.dll" />
-    <Content Include="Firefox\libGLESv2.dll" />
-    <Content Include="Firefox\mozavcodec.dll" />
-    <Content Include="Firefox\mozavutil.dll" />
-    <Content Include="Firefox\mozglue.dll" />
-    <Content Include="Firefox\msvcp140.dll" />
-    <Content Include="Firefox\msvcp140_1.dll" />
-    <Content Include="Firefox\msvcp140_2.dll" />
-    <Content Include="Firefox\msvcp140_atomic_wait.dll" />
-    <Content Include="Firefox\msvcp140_codecvt_ids.dll" />
-    <Content Include="Firefox\nss3.dll" />
-    <Content Include="Firefox\nssckbi.dll" />
-    <Content Include="Firefox\nssdbm3.dll" />
-    <Content Include="Firefox\plugin-container.exe" />
-    <Content Include="Firefox\plugin-hang-ui.exe" />
-    <Content Include="Firefox\qipcap.dll" />
-    <Content Include="Firefox\sandboxbroker.dll" />
-    <Content Include="Firefox\softokn3.dll" />
-    <Content Include="Firefox\ucrtbase.dll" />
-    <Content Include="Firefox\vccorlib140.dll" />
-    <Content Include="Firefox\vcruntime140.dll" />
-    <Content Include="Firefox\xul.dll" />
+    <Content Include="..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.2592.51\runtimes\win-x86\native\WebView2Loader.dll">
+      <Link>WebView2Loader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\8.png" />
     <None Include="Resources\8a.png" />
     <None Include="Resources\7a.png" />
@@ -752,13 +682,6 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\WindowAppication\packages\Geckofx60.32.60.0.55\build\Geckofx60.32.targets" Condition="Exists('..\WindowAppication\packages\Geckofx60.32.60.0.55\build\Geckofx60.32.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\WindowAppication\packages\Geckofx60.32.60.0.55\build\Geckofx60.32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\WindowAppication\packages\Geckofx60.32.60.0.55\build\Geckofx60.32.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

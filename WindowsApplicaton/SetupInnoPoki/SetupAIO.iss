@@ -37,9 +37,6 @@ Source: "*.ico"; DestDir: "{app}"
 Source: "*.dll"; DestDir: "{app}";Permissions: everyone-full
 Source: "*.exe"; DestDir: "{app}" ;Permissions: everyone-full
 Source: "*.config"; DestDir: "{app}" ;Permissions: everyone-full
-Source: "Firefox\*"; DestDir: "{app}\Firefox";Permissions: everyone-full;
-Source: "Firefox\*.dll"; DestDir: "{sys}"; Flags: onlyifdoesntexist sharedfile ignoreversion recursesubdirs createallsubdirs;Permissions: everyone-full
-Source: "Firefox\*.dll"; DestDir: "{syswow64}"; Flags: onlyifdoesntexist sharedfile 64bit ignoreversion recursesubdirs createallsubdirs;Permissions: everyone-full; Check: IsWin64;
 Source: "Pdf\*"; DestDir: "{app}\Pdf";Permissions: everyone-full;
 Source: "App_data\stem_plus.sdf"; DestDir: "{app}\App_data";Permissions: everyone-full;Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
 Source: "dependencies\UltraViewerQS.exe"; DestDir: {app}; Permissions: everyone-full;
@@ -73,8 +70,17 @@ const
   
   //Visual C++ 2005
   VisualCUrl = 'https://back.stemplus.vn/dependencies/VC_redist.x86.exe';
-  VisualCInstallerName = '{tmp}\VC_redist.x86.exe'; 
-  
+  VisualCInstallerName = '{tmp}\VC_redist.x86.exe';
+
+  //Microsoft Edge WebView2 Runtime (cần cho StemPlus.exe hiển thị nội dung bài học HTML5/WebGL)
+  WebView2ClientId = '{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}';
+
+  WebView2X64Url = 'https://back.stemplus.vn/dependencies/MicrosoftEdgeWebView2RuntimeInstallerX64.exe';
+  WebView2X64InstallerName = '{tmp}\MicrosoftEdgeWebView2RuntimeInstallerX64.exe';
+
+  WebView2X86Url = 'https://back.stemplus.vn/dependencies/MicrosoftEdgeWebView2RuntimeInstallerX86.exe';
+  WebView2X86InstallerName = '{tmp}\MicrosoftEdgeWebView2RuntimeInstallerX86.exe';
+
 var CancelWithoutPrompt: boolean;
 
 //-----------------các hàm kiểm tra môi trường trong REGISTRY
@@ -113,6 +119,14 @@ begin
     IsInstalled := RegKeyExists(HKLM, 'SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server Compact Edition\v4.0');  //64-bit
 
   Result := IsInstalled;
+end;
+
+function IsWebView2Installed: Boolean;
+begin
+  // Runtime được đăng ký per-machine dưới key EdgeUpdate Clients; kiểm tra cả 2 vị trí
+  // vì Inno Setup là process 32-bit nên bị Windows tự redirect sang WOW6432Node trên OS 64-bit
+  Result := RegKeyExists(HKLM, 'SOFTWARE\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId) or
+            RegKeyExists(HKLM, 'SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\' + WebView2ClientId);
 end;
 
 //-----------------các hàm kiểm tra môi trường trong REGISTRY
@@ -189,6 +203,37 @@ begin
     WizardForm.ProgressGauge.Style := npbstNormal;
   end;
 end;
+
+procedure InstallWebView2;
+var
+  ResultCode: Integer;
+  StatusText: string;
+  InstallFilePath: string;
+begin
+  try
+    StatusText := WizardForm.StatusLabel.Caption;
+    WizardForm.StatusLabel.Caption := 'Đang cài Microsoft Edge WebView2 Runtime...';
+    WizardForm.ProgressGauge.Style := npbstMarquee;
+    if IsWin64 then
+    begin
+      InstallFilePath := ExpandConstant(WebView2X64InstallerName);
+    end
+    else
+    begin
+      InstallFilePath := ExpandConstant(WebView2X86InstallerName);
+    end;
+
+    if not Exec(InstallFilePath, '/silent /install', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+    begin
+      MsgBox('Lỗi cài đặt Microsoft Edge WebView2 Runtime: ' + IntToStr(ResultCode) + '.', mbError, MB_OK);
+      CancelWithoutPrompt := true;
+      WizardForm.Close;
+    end;
+  finally
+    WizardForm.StatusLabel.Caption := StatusText;
+    WizardForm.ProgressGauge.Style := npbstNormal;
+  end;
+end;
 //----------------------
 
 function InitializeSetup(): Boolean;
@@ -227,7 +272,19 @@ begin
         idpAddFile(Sql86URL, ExpandConstant(Sql86InstallerFileName));
       end
     end;
-    
+
+    if not IsWebView2Installed then
+    begin
+      if IsWin64 then
+      begin
+        idpAddFile(WebView2X64Url, ExpandConstant(WebView2X64InstallerName));
+      end
+      else
+      begin
+        idpAddFile(WebView2X86Url, ExpandConstant(WebView2X86InstallerName));
+      end
+    end;
+
     idpDownloadAfter(wpReady);
 end;
 
@@ -251,9 +308,15 @@ begin
     end;
     
     // Kiểm tra SQL
-    if not IsSqlInstalled then 
-    begin      
+    if not IsSqlInstalled then
+    begin
       InstallSQL();
+    end;
+
+    // Kiểm tra Microsoft Edge WebView2 Runtime
+    if not IsWebView2Installed then
+    begin
+      InstallWebView2();
     end;
   end;
 end;
