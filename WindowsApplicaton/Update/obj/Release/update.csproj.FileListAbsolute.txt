@@ -12,3 +12,17 @@ D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Update\obj\Release\update.cspro
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Update\obj\Release\update.csproj.Up2Date
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Update\obj\Release\updater.exe
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\Update\obj\Release\updater.pdb
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\bin\Release\updater.exe.config
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\bin\Release\updater.exe
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\bin\Release\updater.pdb
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\bin\Release\Ionic.Zip.dll
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\bin\Release\Ionic.Zip.pdb
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\bin\Release\Ionic.Zip.xml
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\update.csproj.AssemblyReference.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\update.update.resources
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\update.Properties.Resources.resources
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\update.csproj.GenerateResource.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\update.csproj.CoreCompileInputs.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\update.csproj.Up2Date
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\updater.exe
+D:\WORK\git\DADS\stem\WindowsApplicaton\Update\obj\Release\updater.pdb

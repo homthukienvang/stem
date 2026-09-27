@@ -26,10 +26,10 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.0.1.1")]
-[assembly: AssemblyFileVersion("2.0.1.1")]
+[assembly: AssemblyVersion("2.0.2.0")]
+[assembly: AssemblyFileVersion("2.0.2.0")]
 //log
-//2024-10-03: 2.0.1.1: Sửa Icon và đổi Ultraview thay cho Teamview
+//2026-09-27: 2.0.2.0: dùng webview2 thay cho geckofx, sửa lỗi login TSL/SSL
 //2022-03-21: 2.0.1.0: Thêm bảng tài liệu download, hoàn thiện toàn bộ cấu trúc bảng cơ bản mới nhất và xóa tất cả các file đã được tải cũ + reset toàn bộ client DB.
 //2022-03-21: 2.0.0.7: nâng cấp phiên bản Log4net,Gecko firefox. Thêm Package DeviceId để thay thế MacIp cũ khi GENERATE bị lỗi.
 //2021-12-20: 2.0.0.7: thêm giao diện "Tài liệu" chứa các mục PDF để view+tải+in

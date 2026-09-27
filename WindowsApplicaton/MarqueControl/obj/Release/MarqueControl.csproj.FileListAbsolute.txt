@@ -8,3 +8,13 @@ D:\WORK\svn\poki\branches\stem\WindowsApplicaton\MarqueControl\obj\Release\Marqu
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.csproj.CoreCompileInputs.cache
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.dll
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.pdb
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\bin\Release\SuperMarquee.XML
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\bin\Release\MarqueControl.dll
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\bin\Release\MarqueControl.pdb
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.csproj.AssemblyReference.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.Controls.SuperMarquee.resources
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.Properties.Resources.resources
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.csproj.GenerateResource.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.csproj.CoreCompileInputs.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.dll
+D:\WORK\git\DADS\stem\WindowsApplicaton\MarqueControl\obj\Release\MarqueControl.pdb

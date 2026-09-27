@@ -4,3 +4,9 @@ D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppModel\obj\Release\AppModel.c
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppModel\obj\Release\AppModel.csproj.CoreCompileInputs.cache
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppModel\obj\Release\Model.dll
 D:\WORK\svn\poki\branches\stem\WindowsApplicaton\AppModel\obj\Release\Model.pdb
+D:\WORK\git\DADS\stem\WindowsApplicaton\AppModel\bin\Release\Model.dll
+D:\WORK\git\DADS\stem\WindowsApplicaton\AppModel\bin\Release\Model.pdb
+D:\WORK\git\DADS\stem\WindowsApplicaton\AppModel\obj\Release\AppModel.csproj.AssemblyReference.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\AppModel\obj\Release\AppModel.csproj.CoreCompileInputs.cache
+D:\WORK\git\DADS\stem\WindowsApplicaton\AppModel\obj\Release\Model.dll
+D:\WORK\git\DADS\stem\WindowsApplicaton\AppModel\obj\Release\Model.pdb

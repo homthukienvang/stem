@@ -1,2 +1,1 @@
 app|version|release date|url|file
-updateme|2.0.1.0|18/06/2023|https://cms.stemplus.vn/version_update_filesv2/|update_2.0.1.0.zip
