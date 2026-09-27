@@ -38,6 +38,7 @@ Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\Resources\icon.ic
 Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\*.dll"; DestDir: "{app}";Permissions: everyone-full
 Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\*.exe"; DestDir: "{app}" ;Permissions: everyone-full
 Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\*.config"; DestDir: "{app}" ;Permissions: everyone-full
+Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\runtimes\*"; DestDir: "{app}\runtimes";Permissions: everyone-full;
 Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\App_data\stem_plus.sdf"; DestDir: "{app}\App_data";Permissions: everyone-full;Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
 Source: "D:\WORK\git\DADS\window_app_dependencies\dependencies\UltraViewerQS.exe"; DestDir: {app}; Permissions: everyone-full;
 

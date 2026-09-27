@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B6454A1-4CD0-4E2E-8F78-3ABE3B5D9AB8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DXWindows</RootNamespace>
+    <AssemblyName>StemPlus</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\WindowAppication\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>5.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.BonusSkins.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.Data.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v18.2.Core">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.Office.v18.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v18.2.Core">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.Pdf.v18.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v18.2.Drawing">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.Pdf.v18.2.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v18.2.Core">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.Printing.v18.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v18.2.Core">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.RichEdit.v18.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v18.2.Export">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.RichEdit.v18.2.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.Utils.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.XtraBars.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.XtraEditors.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.XtraGrid.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.XtraLayout.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPdfViewer.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.XtraPdfViewer.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.XtraPrinting.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v18.2">
+      <HintPath>..\..\..\window_app_dependencies\dlls\DevExpress.XtraTreeList.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DeviceId, Version=6.11.0.0, Culture=neutral, PublicKeyToken=f755c371b5c59c52, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\DeviceId.6.11.0\lib\net40\DeviceId.dll</HintPath>
+    </Reference>
+    <Reference Include="DeviceId.Windows, Version=6.11.0.0, Culture=neutral, PublicKeyToken=f755c371b5c59c52, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\DeviceId.Windows.6.11.0\lib\net40\DeviceId.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="DeviceId.Windows.Wmi, Version=6.11.0.0, Culture=neutral, PublicKeyToken=f755c371b5c59c52, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\DeviceId.Windows.Wmi.6.11.0\lib\net40\DeviceId.Windows.Wmi.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\..\window_app_dependencies\dlls\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zlib">
+      <HintPath>..\..\..\window_app_dependencies\dlls\Ionic.Zlib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=3.4.0.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\log4net.3.4.0\lib\net462\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.4191.47, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.4191.47\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.4191.47, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.4191.47\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.4191.47, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.4191.47\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\WindowAppication\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\Resources Import\dlls\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmAdvertisementFake.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdvertisementFake.Designer.cs">
+      <DependentUpon>frmAdvertisementFake.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdvertisement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdvertisement.Designer.cs">
+      <DependentUpon>frmAdvertisement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientConfirm.Designer.cs">
+      <DependentUpon>frmClientConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowMessage.Designer.cs">
+      <DependentUpon>frmShowMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResetPass.Designer.cs">
+      <DependentUpon>frmResetPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFeedback.Designer.cs">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrinter.Designer.cs">
+      <DependentUpon>frmPrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePass.Designer.cs">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComment.Designer.cs">
+      <DependentUpon>frmComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDownload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDownload.Designer.cs">
+      <DependentUpon>frmDownload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHotline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHotline.Designer.cs">
+      <DependentUpon>frmHotline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmMessage.Designer.cs">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMessageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMessageDialog.Designer.cs">
+      <DependentUpon>frmMessageDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowSyn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowSyn.Designer.cs">
+      <DependentUpon>frmShowSyn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSynsLessonOffline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSynsLessonOffline.Designer.cs">
+      <DependentUpon>frmSynsLessonOffline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewExe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewExe.Designer.cs">
+      <DependentUpon>frmViewExe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewWeb.Designer.cs">
+      <DependentUpon>frmViewWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewDoc.Designer.cs">
+      <DependentUpon>frmViewDoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaitForm.Designer.cs">
+      <DependentUpon>frmWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\DISKHelper.cs" />
+    <Compile Include="Helper\GenerateExcelData.cs" />
+    <Compile Include="Helper\MACHelper.cs" />
+    <Compile Include="Helper\MyWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helper\TabControlManage.cs" />
+    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Helper\UpdateChecker.cs" />
+    <Compile Include="Helper\webdata.cs" />
+    <Compile Include="MyPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyPrint.Designer.cs">
+      <DependentUpon>MyPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ucLesson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ucLesson.Designer.cs">
+      <DependentUpon>ucLesson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ucNews.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ucNews.Designer.cs">
+      <DependentUpon>ucNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ucTaiLieu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ucTaiLieu.Designer.cs">
+      <DependentUpon>ucTaiLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ucUpdateLesson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ucUpdateLesson.Designer.cs">
+      <DependentUpon>ucUpdateLesson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\uListLessonSyns.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\uListLessonSyns.Designer.cs">
+      <DependentUpon>uListLessonSyns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\uListLesson.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\uListLesson.Designer.cs">
+      <DependentUpon>uListLesson.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAdvertisementFake.resx">
+      <DependentUpon>frmAdvertisementFake.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdvertisement.resx">
+      <DependentUpon>frmAdvertisement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientConfirm.resx">
+      <DependentUpon>frmClientConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowMessage.resx">
+      <DependentUpon>frmShowMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResetPass.resx">
+      <DependentUpon>frmResetPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFeedback.resx">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrinter.resx">
+      <DependentUpon>frmPrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePass.resx">
+      <DependentUpon>frmChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComment.resx">
+      <DependentUpon>frmComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDownload.resx">
+      <DependentUpon>frmDownload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHotline.resx">
+      <DependentUpon>frmHotline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessage.resx">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMessageDialog.resx">
+      <DependentUpon>frmMessageDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowSyn.resx">
+      <DependentUpon>frmShowSyn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSynsLessonOffline.resx">
+      <DependentUpon>frmSynsLessonOffline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewExe.resx">
+      <DependentUpon>frmViewExe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewWeb.resx">
+      <DependentUpon>frmViewWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewDoc.resx">
+      <DependentUpon>frmViewDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaitForm.resx">
+      <DependentUpon>frmWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyPrint.resx">
+      <DependentUpon>MyPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ucLesson.resx">
+      <DependentUpon>ucLesson.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ucNews.resx">
+      <DependentUpon>ucNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ucTaiLieu.resx">
+      <DependentUpon>ucTaiLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ucUpdateLesson.resx">
+      <DependentUpon>ucUpdateLesson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\uListLessonSyns.resx">
+      <DependentUpon>uListLessonSyns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\uListLesson.resx">
+      <DependentUpon>uListLesson.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="pdf\bqtg_1.pdf" />
+    <None Include="pdf\bqtg_2.pdf" />
+    <None Include="pdf\bqtg_3.pdf" />
+    <None Include="pdf\bqtg_4.pdf" />
+    <None Include="pdf\gcn_1.pdf" />
+    <None Include="pdf\gcn_2.pdf" />
+    <None Include="pdf\tlct_1.pdf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.4.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 4.0 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_data\stem_plus.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon.ico" />
+    <None Include="Resources\8.png" />
+    <None Include="Resources\8a.png" />
+    <None Include="Resources\7a.png" />
+    <None Include="Resources\7.png" />
+    <None Include="Resources\teamview_20.png" />
+    <None Include="Resources\teamview_12.png" />
+    <None Include="Resources\teamview.png" />
+    <None Include="Resources\status_net_2.png" />
+    <None Include="Resources\status_net_1.png" />
+    <None Include="Resources\4a.png" />
+    <None Include="Resources\header_bg.png" />
+    <None Include="Resources\dialog_no_2.bmp" />
+    <None Include="Resources\dialog-no-2.png" />
+    <None Include="Resources\thongtin.png" />
+    <None Include="Resources\doimatkhau.png" />
+    <None Include="Resources\hotline1.png" />
+    <None Include="Resources\EXIT221.PNG" />
+    <None Include="Resources\capnhat1.png" />
+    <None Include="Resources\thongbao1.PNG" />
+    <None Include="Resources\taikhoan.png" />
+    <None Include="Resources\hotline.png" />
+    <None Include="Resources\capnhat.png" />
+    <None Include="Resources\thongbao.PNG" />
+    <None Include="Resources\EXIT22.PNG" />
+    <None Include="Resources\header9.png" />
+    <None Include="Resources\rd_global-icon-16-register.png" />
+    <None Include="Resources\text-speak.png" />
+    <None Include="Resources\advertisementimg.png" />
+    <None Include="Resources\arrow-up22.png" />
+    <None Include="Resources\arrow-up2.png" />
+    <None Include="Resources\arrowup11.png" />
+    <None Include="Resources\arrowup.png" />
+    <None Include="Resources\dropdownbtn.png" />
+    <None Include="Resources\exit.png" />
+    <None Include="Resources\exit111.png" />
+    <None Include="Resources\refresh_red.png" />
+    <None Include="Resources\window-close-2.png" />
+    <None Include="Resources\mini-button.png" />
+    <None Include="Resources\min-button.png" />
+    <None Include="Resources\max-button.png" />
+    <None Include="Resources\pokimail.png" />
+    <None Include="Resources\button_shape_line-128.png" />
+    <None Include="Resources\6-128.png" />
+    <None Include="Resources\icon-close-round-128.png" />
+    <None Include="Resources\minimizeb.png" />
+    <None Include="Resources\maximizeb.png" />
+    <None Include="Resources\maximizebutton.png" />
+    <None Include="Resources\v-12-128.png" />
+    <None Include="Resources\3a.png" />
+    <None Include="Resources\2a.png" />
+    <None Include="Resources\1c.png" />
+    <None Include="Resources\phanhoi.png" />
+    <None Include="Resources\trinh_chieu.png" />
+    <None Include="Resources\Moi.png" />
+    <None Include="Resources\icon.png" />
+    <None Include="Resources\Giao_an.png" />
+    <None Include="Resources\10.png" />
+    <None Include="Resources\9.png" />
+    <None Include="Resources\5.png" />
+    <None Include="Resources\4.png" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\iconmenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppModel\AppModel.csproj">
+      <Project>{c020075b-648c-4316-8a94-3782c32fec1e}</Project>
+      <Name>AppModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppRepositories\AppRepositories.csproj">
+      <Project>{09C11862-3228-4CBC-A478-C69F8001F69F}</Project>
+      <Name>AppRepositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppServices\AppServices.csproj">
+      <Project>{9ced72fc-ad82-4396-9beb-05e7708d7bdc}</Project>
+      <Name>AppServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extensions\Extensions.csproj">
+      <Project>{c932d656-34f3-41ed-9f15-8fe57ff66114}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarqueControl\MarqueControl.csproj">
+      <Project>{3552cba7-ec6e-4b73-b47c-bd736ce29a38}</Project>
+      <Name>MarqueControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Update\update.csproj">
+      <Project>{2a0ba1b2-a0f1-479f-9083-2ec11d6b70df}</Project>
+      <Name>update</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\WindowAppication\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
