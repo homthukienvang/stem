@@ -7,9 +7,9 @@ DefaultDirName={pf}\Stem+
 AppPublisher=Stem+
 AppPublisherURL=http://stemplus.vn/
 DefaultGroupName=Stem+
-SetupIconFile=D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\Resources\icon.ico
-WizardImageFile=D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\Resources\logobig.bmp
-WizardSmallImageFile=D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\Resources\logo1.bmp
+SetupIconFile=D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\Resources\icon.ico
+WizardImageFile=D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\Resources\logobig.bmp
+WizardSmallImageFile=D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\Resources\logo1.bmp
 UninstallDisplayIcon={app}\StemPlus.exe
 OutputBaseFilename=StemPlus_Setup_2.0.2.0
 UninstallDisplayName=Stem+
@@ -34,12 +34,12 @@ Name: "{app}\App_data"; Permissions: everyone-full
 
 [Files]
 Source: "Packages\Pdf\*"; DestDir: "{app}\Pdf";Permissions: everyone-full;
-Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\Resources\icon.ico"; DestDir: "{app}";Permissions: everyone-full
-Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\*.dll"; DestDir: "{app}";Permissions: everyone-full
-Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\*.exe"; DestDir: "{app}" ;Permissions: everyone-full
-Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\*.config"; DestDir: "{app}" ;Permissions: everyone-full
-Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\runtimes\*"; DestDir: "{app}\runtimes";Permissions: everyone-full;
-Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindowsPoki\bin\x86\Release\App_data\stem_plus.sdf"; DestDir: "{app}\App_data";Permissions: everyone-full;Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
+Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\Resources\icon.ico"; DestDir: "{app}";Permissions: everyone-full
+Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\bin\x86\Release\*.dll"; DestDir: "{app}";Permissions: everyone-full
+Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\bin\x86\Release\*.exe"; DestDir: "{app}" ;Permissions: everyone-full
+Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\bin\x86\Release\*.config"; DestDir: "{app}" ;Permissions: everyone-full
+Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\bin\x86\Release\runtimes\win-x86\native\*"; DestDir: "{app}\runtimes\win-x86\native";Permissions: everyone-full;
+Source: "D:\WORK\git\DADS\stem\WindowsApplicaton\DXWindows\bin\x86\Release\App_data\stem_plus.sdf"; DestDir: "{app}\App_data";Permissions: everyone-full;Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
 Source: "D:\WORK\git\DADS\window_app_dependencies\dependencies\UltraViewerQS.exe"; DestDir: {app}; Permissions: everyone-full;
 
 [Icons] 
